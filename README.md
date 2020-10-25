@@ -92,7 +92,7 @@ $senderId = $input['entry'][0]['messaging'][0]['sender']['id']; //Unique sender 
 $messageText = $input['entry'][0]['messaging'][0]['message']['text']; // Text Message sent by a user to the page
 $postback = $input['entry'][0]['messaging'][0]['postback']['payload']; // Postback received when user clicks on a button
 ```
-
+###### The variables and their use
 Variable | Use
 ------------ | -------------
 $raw_input | Receive POST request webhook events from Messenger Platform in [JSON](https://www.json.org/json-en.html) format
@@ -128,7 +128,8 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']); // set
 curl_exec($ch); // Sending the request
 curl_close($ch); // Closing the curl connection
 ```
-Php allows the script to make http requests. We’ll be using it send post request to the Send API. The variables created and their use
+Php allows the script to make http requests. We’ll be using it send post request to the Send API.
+###### The variables created and their use
 Variable | Use
 ------------ | -------------
 $accessToken | The generated *Access Token*
@@ -136,3 +137,162 @@ $requestURI | [Request URI](https://developers.facebook.com/docs/messenger-platf
 $ch| The curl connection
 $messageText | Text Message sent by a user to the page with the specific **$senderID**
 $response   | An array with value of the request
+
+#### Sending Text Messages
+//IMAGE
+
+An example request for sending a simple text message can be found [here](https://developers.facebook.com/docs/messenger-platform/send-messages/#sending_text).
+For sending text messages an example array code format :
+```php
+$response =
+  [
+
+    'recipient' => ['id' => '<PSID>'], // id of the user we want to send a message to
+    'message' => ['text' => 'hello, world!'] // The message to be sent
+
+  ];
+
+```
+###### The variable/key created and their use
+Variable/Key | Use
+------------ | -------------
+$response | Array 
+recipient | An array with the PSID of the receiver
+recipient. id | Receiver PSID
+message | An array with the text message
+message.text | The text message that will be sent to the user 
+
+Now let’s try sending an actual message from our chatbot.Open your php file and add the following lines of code at the end .
+```php
+if (isset($messageText)) {
+  $response =
+    [
+      'recipient' => ['id' => $senderId], // id of the user we want to send a message to
+      'message' => ['text' => 'Hello, I am a chatbot'] // The message we actually want to send 
+    ];
+}
+
+
+$accessToken = "EAAHMnZB0dW1oBAIIOMdh6vENeCFroWREHarblwBUW0vMMGgvMJbypuZCyZCHX62hykMdicR6MsTp4GpRai7zOMFfgoZAG4fZCAZBvcjCeZCUA8Qtu8As1gQzVEB5F8ssYjnSPUZCJ0uHxj0mniDbYHe4kB6mffaFTs5CEpR6ZBO5AVBavK1fFeyID";
+$requestURI = 'https://graph.facebook.com/v8.0/me/messages?access_token='; //Request URI
+
+$ch = curl_init($requestURI . $accessToken); //Initiating curl with the link to send the request
+curl_setopt($ch, CURLOPT_POST, 1); //Set option for transfer
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($response)); //set option and parsing the value array to JSON format
+curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']); // setting option for transfer
+
+
+if (isset($input)) { //Checking if there is any interaction from any user on the page
+  curl_exec($ch); // Sending the request only if a event occured
+}
+curl_close($ch); // Closing the curl connection
+```
+The php script will be [this](link)
+
+Save the file to the same location.Once done try sending a message to your page. You should get an automated response saying 'Hello, I am a chatbot' . (Important ! : Be sure to change the access token and hub verify token)
+
+
+
+
+Congratulations ! You’ve successfully set up your first chatbot that automatically replies to your messages.
+
+###### Code Explanation
+
+* Line[] to Line [] : We set up webhooks and process events following Step 3 and Step 4
+* Line[] : Conditional statement checks if a message has been sent by the user to the page using the predefined php function isset()
+* Line[] to Line[] : If the condition is satisfied, then $response array for text message format is created 
+* Line[] to Line[] : $response is parsed into JSON format and sent as a request using cURL
+
+ Now we’ll see how to send messages with user clickable buttons.
+
+### Sending Button Template
+
+//IMAGE
+
+
+We’ll now see how to send user clickable buttons with a text message. The detailed documentation can be found [here](https://developers.facebook.com/docs/messenger-platform/reference/templates/button). The array format for sending button template is given in the code snippet below :
+
+```php
+$response =  [
+  'recipient' => ['id' => '<PSID>'],     // Sender ID of the user the message is to be sent
+  'message' => [
+    "attachment" => [
+      "type" => "template",               // Defining attachment type
+      "payload" => [
+        "template_type" => "button",      // Defining the template type
+        "text" => "Click on the button",  // Text message that will be sent along with the buttons
+
+        "buttons" => [                   // array of buttons that can be a maximum of 3
+
+          [                                  // The First Button
+            "type" => "postback",             // button type: postback
+            "title" => "Say Hello",             //The text that will be defined on the button
+            "payload" => "button1_payload",  // Postback that will be send back as an event when a user click on this specific button
+          ],
+          //           [ .... ],            
+          //           [ .... ],
+
+        ],
+      ],
+    ],
+  ]
+];
+```
+###### Properties and their use
+message.attachment.payload | Use
+------------ | -------------
+text | The text to be displayed along with the button
+buttons | An array of maximum of 3 [buttons](https://developers.facebook.com/docs/messenger-platform/reference/buttons/postback)
+text | The text to be displayed along with the button
+
+###### Postback Button [Properties](https://developers.facebook.com/docs/messenger-platform/reference/buttons/postback#properties)
+Property | Use
+------------ | -------------
+type | Must be postaback
+title | The text that will be displayed on the button
+payload | A string that will be sent back to your webhook when a user clicks on this button .This allows the script to take decisions based on the button pressed
+
+Now we will see the button template in action. From the php file erase every line of code created after setting up webhooks. Copy and paste the following code at the end and save it to the server.
+
+```php
+if (isset($messageText)) {
+  $response =  [
+    'recipient' => ['id' => $senderId],
+    'message' => [
+      "attachment" => [
+        "type" => "template",
+        "payload" => [
+          "template_type" => "button",
+          "text" => "Click on the button",
+
+          "buttons" => [
+
+            [
+              "type" => "postback",
+              "title" => "Hello !",
+              "payload" => "button1_payload",
+            ],
+
+          ],
+        ],
+      ],
+    ]
+  ];
+} else if ($postback == 'button1_payload') {
+
+  $response =
+    [
+      'recipient' => ['id' => $senderId],
+      'message' => ['text' => 'Hello, I am a chatbot']
+    ];
+}
+```
+Alternatively, you can rewrite the entire script from [here](link) .
+Now try sending a text message to the page. The bot should reply with a text message attached to a button. Now click on the button and the chatbot will reply with 'Hello, I am a chatbot'. Amazing! Isn’t it ?
+
+###### Code Explanation
+
+* Line[] to Line [] : Script checks if a message is sent.
+* Line[] : If message is sent then a $response array is created with button template with a single button
+* Line[] to Line[] : The $response array sent using cURL to show the user a button 
+* Line[] to Line[] : $response is parsed into JSON format and sent as a request using cURL
