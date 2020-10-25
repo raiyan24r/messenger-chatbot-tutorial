@@ -2,17 +2,17 @@
 ---
 ###### Build a messenger chatbot using basic php knowledge, use carousels with buttons to show customers products of your business on queries from customers.
 
+//IMAGE 
 
 If you own an online business you definitely understand how tiresome and repetitive it is to reply to the same questions from your customers. Furthermore late replies could potentially lead to losing a customer.
-How would you feel if a chatbot could automatically reply to all your customer’s queries and show all available products, that too instantly. You’ll be building a chatbot just like that here .A live demo of the chatbot can be seen [here](https://www.google.com).
+How would you feel if a chatbot could automatically reply to all your customer’s queries and show all available products, that too instantly. You’ll be building a chatbot just like that here .A live demo of the chatbot can be seen [here](m.me/110715410820927).
 
-//IMAGE 
+
 
 In this tutorial for beginners with no prior experience working with Messenger Platform  we will build a simple messenger chatbot from scratch that can automatically reply to customer’s messages,FAQs and show a catalogue of available items for sale . We will be building the chatbot from scratch using basic knowledge of [php](https://www.php.net/manual/en/intro-whatis.php) programming language.
 
 #### Prerequisites:
 * Basic knowledge about php programming language like variables, conditionals, loops, arrays etc
-*  Php installed in your device
 *  Any running editor of your choice.
 *  A running facebook page
 
@@ -39,8 +39,10 @@ In this tutorial for beginners with no prior experience working with Messenger P
    *  Select *Manage Business Integrations*  and click Continue.
    *  Any running editor of your choice.
    *  Give your app a suitable display name,contact email and select *Yourself or your own business* as App Purpose and click Create App.
+   *  
+<img src="../screenshots/1.PNG" width=350 />
+<img src="../screenshots/2.PNG" width=350 />
 
-// IMAGE
 
 ## Step 2 : Connecting App to the Page
 Now that we have successfully created our app we will connect the app to our business page.
@@ -76,7 +78,7 @@ if ($_REQUEST['hub_verify_token'] === $hubVerifyToken) {
 
 //IMAGE
 
-The php script upto this step would look like [this](link)
+The php script upto this step would look like [this](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/file_one.php)
 And with that we’re done with creating our app, connecting it to our page and setting up webhooks. In the next steps we will get our hands dirty and start coding. 
 
 ## Step 4 : Receiving and Processing Webhooks Events
@@ -381,7 +383,8 @@ Save the file and upload to the same location on the server.
 Now try sending a message " what are the available products? " . The chatbot should reply with a carousel of products available. Click on any button on the carousel and you’ll get respective details of the product.
 
 //IMAGE
-
+#### Modifying List of Products 
+We created an array __$products__ by which we can easily customize and edit product images,name,price etc
 
 ###### Code Explanation
 * Line [!] to Line [!] :We wrote code to setup webhooks (follow STEP 2)  and receive webhook events (follow STEP 3). 
@@ -394,6 +397,31 @@ After that we are going to setup the logic statements using if and if-else condi
 * Line [!] : If the condition is satisfied we create a $response array in the format of Text Message with text as the relevant details of product 1
 * Line [!] to Line [!] : We similarly check for which button payload the **$postback** string matches with and create a __\$response__ variable the same way
 * Line [!] to Line [!] : We create a cURL connection **$ch** and send a request with the value __\$response__ array (parsing into JSON format) created in the conditional statements using the Request URI and __\$accessToken__
+
+
+
+Now that you've successfully set up the chatbot that replies to your messages as intended.We must now submit the App for review before we can make it open to the public. 
+
+## Step 7: Submitting your App for the facebook review
+
+You have to submit the app for review to get certain permissions.
+1. First of all, collect a 1024x1024 icon of your app and upload it to **Settings > Basic > App Icon** in the app dashboard. Also complete all the required fields and scroll down to add a platform.
+
+2. Make a screen recording of your chatbot which will be used later for permissions.
+3. From the app dashboard select __App Review > Permissions and Features__
+4. Search *pages_messaging* and click on the **request** button.
+5. Now it’s time to Complete App verification by clicking on the option.
+6. Move on  to the Platform Settings section, check the information and in the space provided, write how can the facebook community access your app in order to test it and save
+7. Next, click on Requested Permissions and Feature and fill “Tell us how you're using this permission or feature” by giving how you will be using the  Pages_messaging feature.
+8. Select your page
+9. Give details about step by step function about your app.
+10. Now upload the screen recording of the chatbot in action from earlier and click **Submit**
+
+
+In maximum 5 days, you will get your review and then if your app is approved you can open the chatbot for public
+
+//IMAGES
+
 
 ---
 ### Congratulations! You’ve set up a fully functional chatbot for your online business which will reply to customer's queries. 
