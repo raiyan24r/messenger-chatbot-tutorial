@@ -1,6 +1,6 @@
 <?php
 
-$hubVerifyToken = 'myBusiness';
+$hubVerifyToken = 'myBusiness_token';
 
 if ($_REQUEST['hub_verify_token'] === $hubVerifyToken) {
   echo $_REQUEST['hub_challenge'];
@@ -20,7 +20,7 @@ if (isset($messageText)) {
   $query = array('products', 'delivery', 'price', 'Price', 'Available', 'available', 'Hi', 'hi', 'Hello', 'hello', 'product details', 'details');
 
   foreach ($query as $string) {
-    if (strpos(strtolower($messageText), strtolower($string)) !== false) {
+    if (strpos($messageText, $string) !== false) {
 
       $response = [
         'recipient' => ['id' => $senderId],
@@ -128,7 +128,7 @@ if (isset($messageText)) {
     ];
 }
 
-$accessToken = "EAAKRP1f5IKcBAFVNNnmfpfBZAZB3Jsg8ZCZA7VYwVt6abdYnYM8kmyq1nbvD4Nr8igZC6mAeakp8W1zUe5Wv3uckJYZC9lNv9suPgXx3shMAufAM2pn1oZAolEbBdXd1eH642TxRye40OkpWe0bqZAbUZChknDZCdktWrfKlYD0uvwbn2MHkXRlGLD";
+$accessToken = "EAAKRP1f5IKcBAFVN........"; //Replace with your generated token
 $requestURI = 'https://graph.facebook.com/v8.0/me/messages?access_token='; //Request URI
 
 
