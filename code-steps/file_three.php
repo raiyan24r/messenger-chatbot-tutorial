@@ -30,5 +30,7 @@ $ch = curl_init($requestURI . $accessToken); //Initiating curl with the link to 
 curl_setopt($ch, CURLOPT_POST, 1); //Set option for transfer
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($response)); //set option and parsing the value array to JSON format
 curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']); // setting option for transfer
-curl_exec($ch); // Sending the request
-curl_close($ch); // Closing the curl connection
+if (isset($input)) { //Checking if there is any interaction from any user on the page
+  curl_exec($ch); // Sending the request only if a event occured
+}
+curl_close($ch); 
