@@ -84,16 +84,14 @@ if (isset($messageText)) {
   $response =
     [
       'recipient' => ['id' => $senderId],
-      'message' => ['text' => 'GoGlow face mask :: 🌸 Removes acne marks. 🌸 Removes dullness and dead skin from the skin. 🌸 Brightens the skin and provides natural glow. 🌸 Removes stubborn sun tan and uneven skin tone. 🌸 Removes dirt and impurities. 🌸 Improves skin texture and condition. 🌸 Adds moisture to the skin and does not over dry. 🌸 Removes white head. 🌸 Works as a gentle exfoliator. 🌸 Makes the skin soft and smooth. 🌸Removes Hyperpigmentation and dark patches.
-      Size : 150gm
-      Shell life : 6 months after opening.']
+      'message' => ['text' => "GoGlow face mask ::\n🌸 Removes acne marks. 🌸 Removes dullness and dead skin from the skin. 🌸 Brightens the skin and provides natural glow. 🌸 Removes stubborn sun tan and uneven skin tone. 🌸 Removes dirt and impurities. 🌸 Improves skin texture and condition. 🌸 Adds moisture to the skin and does not over dry. 🌸 Removes white head. 🌸 Works as a gentle exfoliator. 🌸 Makes the skin soft and smooth. 🌸Removes Hyperpigmentation and dark patches.\nSize : 150gm\nShell life : 6 months after opening."]
     ];
 } else if ($postback == 'product2_payload') {
 
   $response =
     [
       'recipient' => ['id' => $senderId],
-      'message' => ['text' => '🌻Removes acne marks. 
+      'message' => ['text' => "HoneyBee Face Mask\n🌻Removes acne marks. 
         🌻 Removes dullness and dead skin from the skin. 
         🌻 Brightens the skin and provides natural glow. 
         🌻 Removes stubborn sun tan and uneven skin tone. 
@@ -104,7 +102,7 @@ if (isset($messageText)) {
         🌻Removes Hyperpigmentation and dark patches. 
         🌻Removes stubborn sun tan from any part of your body.
         Size : 150gm
-        Expiry date : 6 months after opening jar. ']
+        Expiry date : 6 months after opening jar. "]
     ];
 } else if ($postback == 'product3_payload') {
 
@@ -112,7 +110,7 @@ if (isset($messageText)) {
   $response =
     [
       'recipient' => ['id' => $senderId],
-      'message' => ['text' => 'Herbal Hair Oil aka Hairgician - for all hair type. 
+      'message' => ['text' => "Herbal Hair Oil aka Hairgician - for all hair type.\n
         🍃 Hydration to your hair.
         🍃 It will nourish your hair. 
         🍃 Prevent hair fall. 
@@ -126,11 +124,11 @@ if (isset($messageText)) {
         🍃 Treats chemically damaged hair. 
         🍃 Protects hair from ultra violet ray that emits from the sun. 
         🍃 Hair 2x time stronger. 
-        🍃 Prevents breakage']
+        🍃 Prevents breakage"]
     ];
 }
 
-$accessToken = "EAAKRP1f5IKcBAEGFbckmJRWG7p2c752H0fmqTpOgxU2oB6zVYYwhU8aZAY3gZAZBtCCY6QfC3sFy1NQ1YYz6cbql7BrkXeN2F6ZBmwmXVnT8ZCDNiwrfR8ZAqFgqRVDfHYPFga6GbpnlrFFrzJ4OZBk4PZCd529hLZCJhL66zUZBWpEd2BMvzRq3jK";
+$accessToken = "EAAKRP1f5IKcBAFVNNnmfpfBZAZB3Jsg8ZCZA7VYwVt6abdYnYM8kmyq1nbvD4Nr8igZC6mAeakp8W1zUe5Wv3uckJYZC9lNv9suPgXx3shMAufAM2pn1oZAolEbBdXd1eH642TxRye40OkpWe0bqZAbUZChknDZCdktWrfKlYD0uvwbn2MHkXRlGLD";
 $requestURI = 'https://graph.facebook.com/v8.0/me/messages?access_token='; //Request URI
 
 
