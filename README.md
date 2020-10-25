@@ -29,7 +29,7 @@ In this tutorial for beginners with no prior experience working with Messenger P
  2. Connecting app to the page
  3. Connecting app to webhook
  4. Receiving and Processing Webhook Events
- 5. Sending Different Messages
+ 5. Sending different Messages
  6. Setting Up Final Chatbot
  7. Submitting App for Review
 
@@ -152,8 +152,7 @@ Php allows the script to make http requests. We’ll be using it send post reque
 | `$response`    | An array with value of the request                                                                |
 
 #### Sending Text Messages
-![WhatsApp Image 2020-10-26 at 02 45 36](https://user-images.githubusercontent.com/65073451/97118869-b490e680-1736-11eb-8531-2b43c5eaf6aa.jpg)
-
+![rsz_whatsapp_image_2020-10-26_at_024536](https://user-images.githubusercontent.com/65073451/97119147-74326800-1738-11eb-9f94-f609a7242e43.jpg)
 
 An example request for sending a simple text message in the officicial documents can be found [here](https://developers.facebook.com/docs/messenger-platform/send-messages/#sending_text).
 For sending text messages an example array code format :
@@ -221,7 +220,7 @@ Congratulations ! You’ve successfully set up your first chatbot that automatic
 
 ### Sending Button Template
 
-![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/65073451/97118815-709de180-1736-11eb-8418-2678c9ae084b.gif)
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/65073451/97119106-39303480-1738-11eb-97eb-77821feb5afc.gif)
 
 
 
