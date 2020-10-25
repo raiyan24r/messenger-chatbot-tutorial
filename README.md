@@ -117,7 +117,8 @@ $postback = $input['entry'][0]['messaging'][0]['postback']['payload']; // Postba
 
 ## Step 5 : Replying to Message
 
-# //IMAGE BLOCK DIAGRAM
+![mechanism](https://user-images.githubusercontent.com/65073451/97120432-1e15f280-1741-11eb-8e07-cd71101b8d05.png)
+
 
 All messages,templates or attachments are sent using the [Send API](https://developers.facebook.com/docs/messenger-platform/reference/send-api). We’ll be sending all types of messages,templates or attachments by making POST requests using [cURL](https://www.php.net/manual/en/book.curl.php). We’ll be using php multidimensional arrays to format the structured and unstructured messages and then parse them into JSON before sending the request for our benefit.
 
