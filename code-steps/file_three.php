@@ -23,7 +23,7 @@ if (isset($messageText)) {
       ];
   }
   
-$accessToken = "EAAHMnZB0dW1oBAIIOMdh6vENeCFroWREHarblwBUW0vMMGgvMJbypuZCyZCHX62hykMdicR6MsTp4GpRai7zOMFfgoZAG4fZCAZBvcjCeZCUA8Qtu8As1gQzVEB5F8ssYjnSPUZCJ0uHxj0mniDbYHe4kB6mffaFTs5CEpR6ZBO5AVBavK1fFeyID";
+$accessToken = "EAAKRP1f5IKcBAFVN........"; //Replace with your generated token
 $requestURI = 'https://graph.facebook.com/v8.0/me/messages?access_token='; //Request URI
   
 $ch = curl_init($requestURI . $accessToken); //Initiating curl with the link to send the request
