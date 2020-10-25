@@ -1,4 +1,4 @@
-# Building A Simple Messenger Chatbot for Online Business Using PHP
+# Building A Messenger Chatbot for An Online Business Using PHP
 ---
 ###### Build a messenger chatbot using basic php knowledge, use carousels with buttons to show customers products of your business on queries from customers.
 
@@ -210,8 +210,8 @@ Congratulations ! You’ve successfully set up your first chatbot that automatic
 
 ###### Code Explanation
 
-* Line[] to Line [] : We set up webhooks and process events following Step 3 and Step 4
-* Line[] : Conditional statement checks if a message has been sent by the user to the page using the predefined php __function ```isset()```__
+* Line [3](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/d73e3dcdaa3da7bb895a7365011ba1bb63b4a1bc/code-steps/file_three.php#L3) to Line [14](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/d73e3dcdaa3da7bb895a7365011ba1bb63b4a1bc/code-steps/file_three.php#L14) : We set up webhooks and process events following Step 3 and Step 4
+* Line [18](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/d73e3dcdaa3da7bb895a7365011ba1bb63b4a1bc/code-steps/file_three.php#L18) : Conditional statement checks if a message has been sent by the user to the page using the predefined php __function ```isset()```__
 * Line[] to Line[] : If the condition is satisfied, then ```$response``` array for text message format is created 
 * Line[] to Line[] : ```$response``` is parsed into JSON format and sent as a request using cURL
 
