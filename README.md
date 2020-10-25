@@ -87,7 +87,7 @@ if ($_REQUEST['hub_verify_token'] === $hubVerifyToken) {
 
 ![6](https://user-images.githubusercontent.com/65073451/97110770-43850b00-1705-11eb-8ab0-1da14a1bb7aa.PNG)
 
-The php script upto this step would look like [this](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/file_one.php)
+**The php script upto this step would look like [this](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/file_one.php)**
 
 And with that we’re done with creating our app, connecting it to our page and setting up webhooks. In the next steps we will get our hands dirty and start coding. 
 
@@ -107,13 +107,13 @@ $postback = $input['entry'][0]['messaging'][0]['postback']['payload']; // Postba
 ###### The variables and their use
 Variable | Use
 ------------ | -------------
-$raw_input | Receive POST request webhook events from Messenger Platform in [JSON](https://www.json.org/json-en.html) format
-$input | [Process](https://www.php.net/manual/en/function.json-decode) the JSON and decode it to create a multidimensional associative [array](https://www.php.net/manual/en/language.types.array.php) for ease of use
-$senderId | [PSID](https://developers.facebook.com/docs/messenger-platform/getting-started/quick-start#what-is-a-psid-) of the user for whom the webhook event is received.With each event a sender ID unique for the user interacting with the page is received
-$messageText | Text Message sent by a user to the page with the specific **$senderID**
-$postback   | Postback string received when user clicks on a button
+`$raw_input` | Receive POST request webhook events from Messenger Platform in [JSON](https://www.json.org/json-en.html) format
+`$input` | [Process](https://www.php.net/manual/en/function.json-decode) the JSON and decode it to create a multidimensional associative [array](https://www.php.net/manual/en/language.types.array.php) for ease of use
+`$senderId` | [PSID](https://developers.facebook.com/docs/messenger-platform/getting-started/quick-start#what-is-a-psid-) of the user for whom the webhook event is received.With each event a sender ID unique for the user interacting with the page is received
+`$messageText` | Text Message sent by a user to the page with the specific **$senderID**
+`$postback`   | Postback string received when user clicks on a button
 
-The php script upto this step would look like [this](link)
+**Your php script upto this step would look like [this](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/file_two.php)**
 
 
 
@@ -144,16 +144,16 @@ Php allows the script to make http requests. We’ll be using it send post reque
 ###### The variables created and their use
 Variable | Use
 ------------ | -------------
-$accessToken | The generated *Access Token*
-$requestURI | [Request URI](https://developers.facebook.com/docs/messenger-platform/reference/send-api#request)
-$ch| The curl connection
-$messageText | Text Message sent by a user to the page with the specific **$senderID**
-$response   | An array with value of the request
+`$accessToken` | The generated *Access Token*
+`$requestURI` | [Request URI](https://developers.facebook.com/docs/messenger-platform/reference/send-api#request)
+`$ch`| The curl connection
+`$messageText` | Text Message sent by a user to the page with the specific **$senderID**
+`$response`   | An array with value of the request
 
 #### Sending Text Messages
 //IMAGE
 
-An example request for sending a simple text message can be found [here](https://developers.facebook.com/docs/messenger-platform/send-messages/#sending_text).
+An example request for sending a simple text message in the officicial documents can be found [here](https://developers.facebook.com/docs/messenger-platform/send-messages/#sending_text).
 For sending text messages an example array code format :
 ```php
 $response =
@@ -199,9 +199,9 @@ if (isset($input)) { //Checking if there is any interaction from any user on the
 }
 curl_close($ch); // Closing the curl connection
 ```
-The php script will be [this](link)
+**The php script will be [this](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/file_three.php)**
 
-Save the file to the same location.Once done try sending a message to your page. You should get an automated response saying 'Hello, I am a chatbot' . (Important ! : Be sure to change the access token and hub verify token)
+Save the file to the same location.Once done try sending a message to your page. You should get an automated response saying *'Hello, I am a chatbot'* . (**Important** ! : Be sure to change the access token and hub verify token)
 
 
 
@@ -211,9 +211,9 @@ Congratulations ! You’ve successfully set up your first chatbot that automatic
 ###### Code Explanation
 
 * Line[] to Line [] : We set up webhooks and process events following Step 3 and Step 4
-* Line[] : Conditional statement checks if a message has been sent by the user to the page using the predefined php function isset()
-* Line[] to Line[] : If the condition is satisfied, then $response array for text message format is created 
-* Line[] to Line[] : $response is parsed into JSON format and sent as a request using cURL
+* Line[] : Conditional statement checks if a message has been sent by the user to the page using the predefined php __function ```isset()```__
+* Line[] to Line[] : If the condition is satisfied, then ```$response``` array for text message format is created 
+* Line[] to Line[] : ```$response``` is parsed into JSON format and sent as a request using cURL
 
  Now we’ll see how to send messages with user clickable buttons.
 
@@ -299,15 +299,15 @@ if (isset($messageText)) {
     ];
 }
 ```
-Alternatively, you can rewrite the entire script from [here](link) .
+**Alternatively, you can rewrite the entire script from [here](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/file_four.php)** .
 Now try sending a text message to the page. The bot should reply with a text message attached to a button. Now click on the button and the chatbot will reply with 'Hello, I am a chatbot'. Amazing! Isn’t it ?
 
 ###### Code Explanation
 
 * Line[] to Line [] : Script checks if a message is sent.
-* Line[] : If message is sent then a $response array is created with button template with a single button
-* Line[] to Line[] : The $response array sent using cURL to show the user a button 
-* Line[] to Line[] : $response is parsed into JSON format and sent as a request using cURL
+* Line[] : If message is sent then a `$response` array is created with button template with a single button
+* Line[] to Line[] : The `$response` array sent using cURL to show the user a button 
+* Line[] to Line[] : `$response` is parsed into JSON format and sent as a request using cURL
 
 Alright then we are now going to implement one more template which will actually display the products/services offered by our business in a horizontal scrollable carousel with images.
 
@@ -384,17 +384,149 @@ The logical flow of the chatbot works in the following way :
 
 The completed code is given below, replace the entire script of the myBusiness.php file with this code:
 ```php
+<?php
+
+$hubVerifyToken = 'myBusiness';
+
+if ($_REQUEST['hub_verify_token'] === $hubVerifyToken) {
+  echo $_REQUEST['hub_challenge'];
+  exit;
+}
+
+$raw_input = file_get_contents('php://input'); // Receive POST request events from Messenger Platform in json format and store it in $raw_input variable
+$input = json_decode($raw_input, true); // Process the json and decode it to create a multidimensional associative array
+$senderId = $input['entry'][0]['messaging'][0]['sender']['id']; //Unique sender id for the user interacting with your page
+$messageText = $input['entry'][0]['messaging'][0]['message']['text']; // Text Message sent by a user to the page
+$postback = $input['entry'][0]['messaging'][0]['postback']['payload']; // Postback received when user clicks on a button
+
+
+if (isset($messageText)) {
+
+
+  $query = array('products', 'delivery', 'price', 'Price', 'Available', 'available', 'Hi', 'hi', 'Hello', 'hello', 'product details', 'details');
+
+  foreach ($query as $string) {
+    if (strpos(strtolower($messageText), strtolower($string)) !== false) {
+
+      $response = [
+        'recipient' => ['id' => $senderId],
+        'message' => [
+          "attachment" => [
+            "type" => "template",         // Attachment type will be template
+            "payload" => [
+              "template_type" => "generic",    // template type will be generic
+              "image_aspect_ratio" => "square",     // Image attached will be square
+              "elements" => [
+                [
+                  "title" => "GoGlow Face Mask",
+                  "image_url" => "/7card1.jpg",
+                  "subtitle" => "8.99$",
+                  "buttons" => [
+                    [
+                      "type" => "postback",
+                      "title" => "More Details",
+                      "payload" => "product1_payload"
+                    ],
+                  ]
+                ],
+                [
+                  "title" => "HoneyBee Face Pack",
+                  "image_url" => "/7card2.jpg",
+                  "subtitle" => "9.99$",
+                  "buttons" => [
+                    [
+                      "type" => "postback",
+                      "title" => "More Details",
+                      "payload" => "product2_payload"
+                    ],
+                  ],
+                ],
+                [
+                  "title" => "Hairgician",
+                  "image_url" => "/7card3.jpg",
+                  "subtitle" => "6.99$",
+                  "buttons" => [
+                    [
+                      "type" => "postback",
+                      "title" => "More Details",
+                      "payload" => "product3_payload"
+                    ],
+                  ],
+                ],
+              ],
+            ],
+          ],
+        ],
+      ];
+
+      break;
+    }
+  }
+} else if ($postback == 'product1_payload') {
+
+  $response =
+    [
+      'recipient' => ['id' => $senderId],
+      'message' => ['text' => "GoGlow face mask ::\n🌸 Removes acne marks. 🌸 Removes dullness and dead skin from the skin. 🌸 Brightens the skin and provides natural glow.🌸 Removes white head. 🌸 Works as a gentle exfoliator. 🌸 Makes the skin soft and smooth. 🌸Removes Hyperpigmentation and dark patches.\nSize : 150gm\nShell life : 6 months after opening."]
+    ];
+} else if ($postback == 'product2_payload') {
+
+  $response =
+    [
+      'recipient' => ['id' => $senderId],
+      'message' => ['text' => "HoneyBee Face Mask\n🌻Removes acne marks. 
+        🌻 Removes dullness and dead skin from the skin.
+        🌻 Works as a gentle exfoliator. 
+        🌻 Makes the skin soft and smooth. 
+        🌻Removes Hyperpigmentation and dark patches. 
+        🌻Removes stubborn sun tan from any part of your body.
+        Size : 150gm
+        Expiry date : 6 months after opening jar. "]
+    ];
+} else if ($postback == 'product3_payload') {
+
+
+  $response =
+    [
+      'recipient' => ['id' => $senderId],
+      'message' => ['text' => "Herbal Hair Oil aka Hairgician - for all hair type.\n
+        🍃 Hydration to your hair.
+        🍃 It will nourish your hair. 
+        🍃 Prevent hair fall. 
+        🍃 Improvement in hair growth.
+        🍃 Reduces Risk of Lice. 
+        🍃 Prevents Dandruff. 
+        🍃 Strengthens Roots. 
+        🍃 Protects your scalp from being too oily."]
+    ];
+}
+
+$accessToken = "EAAKRP1f5IKcBAFVNNnmfpfBZAZB3Jsg8ZCZA7VYwVt6abdYnYM8kmyq1nbvD4Nr8igZC6mAeakp8W1zUe5Wv3uckJYZC9lNv9suPgXx3shMAufAM2pn1oZAolEbBdXd1eH642TxRye40OkpWe0bqZAbUZChknDZCdktWrfKlYD0uvwbn2MHkXRlGLD";
+$requestURI = 'https://graph.facebook.com/v8.0/me/messages?access_token='; //Request URI
+
+
+$ch = curl_init($requestURI . $accessToken); //Initiating curl with the link to send the request
+curl_setopt($ch, CURLOPT_POST, 1); //Set option for transfer
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($response)); //set option and parsing the value array to JSON format
+curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']); // setting option for transfer
+curl_exec($ch); // Sending the request
+curl_close($ch); // Closing the curl connection
 
 ```
 
-Alternatively, download the file ,replace the **$accessToken**.
+Alternatively, download the [file](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/complete_chatbot.php) ,replace the **$accessToken** with your's.
 
 Save the file and upload to the same location on the server. 
 Now try sending a message " what are the available products? " . The chatbot should reply with a carousel of products available. Click on any button on the carousel and you’ll get respective details of the product.
 
 //IMAGE
 #### Modifying List of Products 
-We created an array __$products__ by which we can easily customize and edit product images,name,price etc
+* The list of products in the horizontal catalogue can be modified. Based on your need you can increase (upto 10) or decrease the number of products. 
+* The array in this [line](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/eaeb1937a744f1640327b8f8fddabf50535e1382/code-steps/complete_chatbot.php#L33) can be modified to add or remove more generic templates with product image, name, price etc.
+* More conditional statements can be added to based on user action to create a more developed chatbot capable of doing much more. 
+
+The sky is the limit !
+
 
 ###### Code Explanation
 * Line [!] to Line [!] :We wrote code to setup webhooks (follow STEP 2)  and receive webhook events (follow STEP 3). 
@@ -413,6 +545,8 @@ After that we are going to setup the logic statements using if and if-else condi
 Now that you've successfully set up the chatbot that replies to your messages as intended.We must now submit the App for review before we can make it open to the public. 
 
 ## Step 7: Submitting your App for the facebook review
+
+//IMAGE
 
 You have to submit the app for review to get certain permissions.
 1. First of all, collect a 1024x1024 icon of your app and upload it to **Settings > Basic > App Icon** in the app dashboard. Also complete all the required fields and scroll down to add a platform.
