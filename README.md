@@ -40,8 +40,8 @@ In this tutorial for beginners with no prior experience working with Messenger P
    *  Any running editor of your choice.
    *  Give your app a suitable display name,contact email and select *Yourself or your own business* as App Purpose and click Create App.
    *  
-<img src="../screenshots/1.PNG" width=350 />
-<img src="../screenshots/2.PNG" width=350 />
+<img src="../main/screenshots/1.PNG" width=350 />
+<img src="../main/screenshots/2.PNG" width=350 />
 
 
 ## Step 2 : Connecting App to the Page
