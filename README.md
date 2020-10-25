@@ -296,3 +296,106 @@ Now try sending a text message to the page. The bot should reply with a text mes
 * Line[] : If message is sent then a $response array is created with button template with a single button
 * Line[] to Line[] : The $response array sent using cURL to show the user a button 
 * Line[] to Line[] : $response is parsed into JSON format and sent as a request using cURL
+
+Alright then we are now going to implement one more template which will actually display the products/services offered by our business in a horizontal scrollable carousel with images.
+
+### Sending Generic Template
+The [generic template](https://developers.facebook.com/docs/messenger-platform/send-messages/template/generic) is one of my favourites because it is one of the most useful and interactive templates offered to us by the Messenger Platform. It is a structured message that contains an image,title,subtitle and even buttons all together.
+We’ll be sending a list of this template as a horizontal scrollable carousel. How cool is that !?
+he details and properties of the generic template with an example can be found [here](https://developers.facebook.com/docs/messenger-platform/reference/templates/generic). An example array format that we will be using to send a list of products and their details in a horizontal scrollable carousel is given below: 
+```php
+
+//IMAGE
+
+
+$response = [
+  'recipient' => ['id' => $senderId],
+  'message' => [
+    "attachment" => [
+      "type" => "template",         // Attachment type will be template
+      "payload" => [
+        "template_type" => "generic",    // template type will be generic
+        "image_aspect_ratio" => "square",     // Image attached will be square
+        "elements" => [     //Array of Generic Templates. Maximum 10
+          [
+            "title" => "<Product 1 Title>",// The title of the Generic Template
+            "image_url" => "<link to your product 1 image>", //The image URL to show
+            "subtitle" => "<Product 1 Price>", // A subtitle that will be displayed
+            "buttons" => [ //Array of buttons
+              [
+                "type" => "postback",
+                "title" => "More Details",
+                "payload" => "product1_payload"
+              ],
+            ]
+          ],
+          [
+            "title" => "<Product 2 Title>",
+            "image_url" => "<link to your product 2 image>",
+            "subtitle" => "<Product 2 Price>",
+            "buttons" => [
+              [
+                "type" => "postback",
+                "title" => "More Details",
+                "payload" => "product2_payload"
+              ],
+            ],
+          ],
+
+          //      [......]
+          //      [......]
+
+        ],
+      ],
+    ],
+  ],
+];
+
+```
+
+The *elements* property is an array containing a list of generic templates with images,title,subtitle and buttons. A maximum of 10 generic templates can be listed together.
+
+Now that we’ve got the general idea of 3 different types of messages offered by the Messenger Platform we’ll use these to set up our chatbot for online business that can reply to customers automatically to show a catalog of available products.
+
+## Step 6 : Setting Up The Final Chatbot
+//IMAGE
+
+
+The logical flow of the chatbot works in the following way :
+
+1. A person sends a message or starts a conversation with the business facebook page.
+2. A potential customer asks for relevant info about the products, price, image etc
+3. The chatbot replies with a horizontal carousel of products that includes the product name,image and price and button to show relevant details about the product
+4. Person browses the carousel and clicks on a button
+5. The chatbot replies with all the details about the product
+
+
+The completed code is given below, replace the entire script of the myBusiness.php file with this code:
+```php
+
+```
+
+Alternatively, download the file ,replace the **$accessToken**.
+
+Save the file and upload to the same location on the server. 
+Now try sending a message " what are the available products? " . The chatbot should reply with a carousel of products available. Click on any button on the carousel and you’ll get respective details of the product.
+
+//IMAGE
+
+
+###### Code Explanation
+* Line [!] to Line [!] :We wrote code to setup webhooks (follow STEP 2)  and receive webhook events (follow STEP 3). 
+
+After that we are going to setup the logic statements using if and if-else conditional statements.
+* Line [!] : We write an array $query containing a list of query strings that a customer might text to trigger the chatbot. You can add your own strings in the array
+* Line [!] : In the if statement we check if the **$messageText** variable matches any of the strings in the __\$query__ array 
+* Line [!] to Line [!] : If the condition is satisfied then we create $response array in the generate template format with 3 elements to display 3 products and their details with image of the product. We specify the product name in title, product price as subtitle and image_url as the link of the product image to display.
+* Line [!] : In the if-else statement we check if the $postback string is the same as the payload of button of product 1 in line [!]
+* Line [!] : If the condition is satisfied we create a $response array in the format of Text Message with text as the relevant details of product 1
+* Line [!] to Line [!] : We similarly check for which button payload the **$postback** string matches with and create a __\$response__ variable the same way
+* Line [!] to Line [!] : We create a cURL connection **$ch** and send a request with the value __\$response__ array (parsing into JSON format) created in the conditional statements using the Request URI and __\$accessToken__
+
+---
+### Congratulations! You’ve set up a fully functional chatbot for your online business which will reply to customer's queries. 
+
+:tada: :sparkles: :white_check_mark:
