@@ -18,10 +18,7 @@ In this tutorial for beginners with no prior experience working with Messenger P
 *  A running facebook page
 
 
-
-
-
-# //IMAGE BLOCK DIAGRAM
+![intro](https://user-images.githubusercontent.com/65073451/97120011-5a941f00-173e-11eb-9a57-3983dce38bb0.png)
 
 
 ### Steps For Creating The Chatbot :
@@ -541,7 +538,7 @@ After that we are going to setup the logic statements using if and if-else condi
 
 Now that you've successfully set up the chatbot that replies to your messages as intended.We must now submit the App for review before we can make it open to the public. 
 
-## Step 7: Submitting your App for the facebook review
+## Step 7: Submitting App Review
 
 ![99](https://user-images.githubusercontent.com/65073451/97117645-439a0080-172f-11eb-9d74-203b0d5c918a.PNG)
 
