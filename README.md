@@ -2,7 +2,8 @@
 ---
 ###### Build a messenger chatbot using basic php knowledge, use carousels with buttons to show customers products of your business on queries from customers.
 
-//IMAGE 
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/65073451/97118717-da69bb80-1735-11eb-97eb-6adc866ac2b1.gif)
+
 
 If you own an online business you definitely understand how tiresome and repetitive it is to reply to the same questions from your customers. Furthermore late replies could potentially lead to losing a customer.
 How would you feel if a chatbot could automatically reply to all your customer’s queries and show all available products, that too instantly. You’ll be building a chatbot just like that here .A live demo of the chatbot can be seen [here](m.me/110715410820927).
@@ -20,7 +21,7 @@ In this tutorial for beginners with no prior experience working with Messenger P
 
 
 
-//IMAGE
+# //IMAGE BLOCK DIAGRAM
 
 
 ### Steps For Creating The Chatbot :
@@ -119,7 +120,7 @@ $postback = $input['entry'][0]['messaging'][0]['postback']['payload']; // Postba
 
 ## Step 5 : Replying to Message
 
-//IMAGE
+# //IMAGE BLOCK DIAGRAM
 
 All messages,templates or attachments are sent using the [Send API](https://developers.facebook.com/docs/messenger-platform/reference/send-api). We’ll be sending all types of messages,templates or attachments by making POST requests using [cURL](https://www.php.net/manual/en/book.curl.php). We’ll be using php multidimensional arrays to format the structured and unstructured messages and then parse them into JSON before sending the request for our benefit.
 
@@ -151,7 +152,7 @@ Php allows the script to make http requests. We’ll be using it send post reque
 | `$response`    | An array with value of the request                                                                |
 
 #### Sending Text Messages
-//IMAGE
+# //IMAGE SCREENSHOT
 
 An example request for sending a simple text message in the officicial documents can be found [here](https://developers.facebook.com/docs/messenger-platform/send-messages/#sending_text).
 For sending text messages an example array code format :
@@ -219,7 +220,7 @@ Congratulations ! You’ve successfully set up your first chatbot that automatic
 
 ### Sending Button Template
 
-//IMAGE
+# //IMAGE SCREENSHOT
 
 
 We’ll now see how to send user clickable buttons with a text message. The detailed documentation can be found [here](https://developers.facebook.com/docs/messenger-platform/reference/templates/button). The array format for sending button template is given in the code snippet below :
@@ -304,10 +305,10 @@ Now try sending a text message to the page. The bot should reply with a text mes
 
 ###### Code Explanation
 
-* Line[1](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L1) to Line [14](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L14) : Script checks if a message is sent.
-* Line[16](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L16) : If message is sent then a `$response` array is created with button template with a single button
-* Line[17](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L17) to Line[38](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L38) : The `$response` array sent using cURL to show the user a button 
-* Line[51](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L51) to Line[56](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L56) : `$response` is parsed into JSON format and sent as a request using cURL
+* Line [1](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L1) to Line [14](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L14) : Script checks if a message is sent.
+* Line [16](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L16) : If message is sent then a `$response` array is created with button template with a single button
+* Line [17](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L17) to Line [38](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L38) : The `$response` array sent using cURL to show the user a button 
+* Line [51](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L51) to Line [56](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L56) : `$response` is parsed into JSON format and sent as a request using cURL
 
 Alright then we are now going to implement one more template which will actually display the products/services offered by our business in a horizontal scrollable carousel with images.
 
@@ -316,10 +317,6 @@ The [generic template](https://developers.facebook.com/docs/messenger-platform/s
 We’ll be sending a list of this template as a horizontal scrollable carousel. How cool is that !?
 he details and properties of the generic template with an example can be found [here](https://developers.facebook.com/docs/messenger-platform/reference/templates/generic). An example array format that we will be using to send a list of products and their details in a horizontal scrollable carousel is given below: 
 ```php
-
-//IMAGE
-
-
 $response = [
   'recipient' => ['id' => $senderId],
   'message' => [
@@ -519,7 +516,6 @@ Alternatively, download the [file](https://github.com/raiyan24r/messenger-chatbo
 Save the file and upload to the same location on the server. 
 Now try sending a message " what are the available products? " . The chatbot should reply with a carousel of products available. Click on any button on the carousel and you’ll get respective details of the product.
 
-//IMAGE
 #### Modifying List of Products 
 * The list of products in the horizontal catalogue can be modified. Based on your need you can increase (upto 10) or decrease the number of products. 
 * The array in this [line](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/eaeb1937a744f1640327b8f8fddabf50535e1382/code-steps/complete_chatbot.php#L33) can be modified to add or remove more generic templates with product image, name, price etc.
