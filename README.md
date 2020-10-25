@@ -29,7 +29,7 @@ In this tutorial for beginners with no prior experience working with Messenger P
  2. Connecting app to the page
  3. Connecting app to webhook
  4. Receiving and Processing Webhook Events
- 5. Sending different Messages
+ 5. Sending Different Messages
  6. Setting Up Final Chatbot
  7. Submitting App for Review
 
@@ -152,7 +152,8 @@ Php allows the script to make http requests. We’ll be using it send post reque
 | `$response`    | An array with value of the request                                                                |
 
 #### Sending Text Messages
-# //IMAGE SCREENSHOT
+![WhatsApp Image 2020-10-26 at 02 45 36](https://user-images.githubusercontent.com/65073451/97118869-b490e680-1736-11eb-8531-2b43c5eaf6aa.jpg)
+
 
 An example request for sending a simple text message in the officicial documents can be found [here](https://developers.facebook.com/docs/messenger-platform/send-messages/#sending_text).
 For sending text messages an example array code format :
@@ -220,7 +221,8 @@ Congratulations ! You’ve successfully set up your first chatbot that automatic
 
 ### Sending Button Template
 
-# //IMAGE SCREENSHOT
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/65073451/97118815-709de180-1736-11eb-8418-2678c9ae084b.gif)
+
 
 
 We’ll now see how to send user clickable buttons with a text message. The detailed documentation can be found [here](https://developers.facebook.com/docs/messenger-platform/reference/templates/button). The array format for sending button template is given in the code snippet below :
@@ -367,7 +369,8 @@ The *elements* property is an array containing a list of generic templates with 
 Now that we’ve got the general idea of 3 different types of messages offered by the Messenger Platform we’ll use these to set up our chatbot for online business that can reply to customers automatically to show a catalog of available products.
 
 ## Step 6 : Setting Up The Final Chatbot
-//IMAGE
+![Untitled-1-01](https://user-images.githubusercontent.com/65073451/97118990-88299a00-1737-11eb-919e-89b1eb233a1a.png)
+
 
 
 The logical flow of the chatbot works in the following way :
