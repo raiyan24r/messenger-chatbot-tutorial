@@ -368,7 +368,7 @@ The *elements* property is an array containing a list of generic templates with 
 Now that we’ve got the general idea of 3 different types of messages offered by the Messenger Platform we’ll use these to set up our chatbot for online business that can reply to customers automatically to show a catalog of available products.
 
 ## Step 6 : Setting Up The Final Chatbot
-![Untitled-1-01](https://user-images.githubusercontent.com/65073451/97118990-88299a00-1737-11eb-919e-89b1eb233a1a.png)
+![rsz_untitled-1-01](https://user-images.githubusercontent.com/65073451/97119202-cd9a9700-1738-11eb-9780-f1256de3202b.png)
 
 
 
