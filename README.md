@@ -39,9 +39,9 @@ In this tutorial for beginners with no prior experience working with Messenger P
    *  Select *Manage Business Integrations*  and click Continue.
    *  Any running editor of your choice.
    *  Give your app a suitable display name,contact email and select *Yourself or your own business* as App Purpose and click Create App.
-   *  
-<img src="../main/screenshots/1.PNG" width=350 />
-<img src="../main/screenshots/2.PNG" width=350 />
+  
+![1](https://user-images.githubusercontent.com/65073451/97110282-927d7100-1702-11eb-9de9-372839987bce.jpg)
+
 
 
 ## Step 2 : Connecting App to the Page
@@ -52,8 +52,10 @@ Now that we have successfully created our app we will connect the app to our bus
    *  Now we must generate a unique token that will be used by our php script to send API requests .
    *  Click on *Generate Token*, copy the token generated and **save it** for later.
 
-//IMAGE
 
+
+<img src="https://user-images.githubusercontent.com/65073451/97109968-960ff880-1700-11eb-9e7f-62cda6627ce1.png" width=550 />
+<img src="https://user-images.githubusercontent.com/65073451/97109968-960ff880-1700-11eb-9e7f-62cda6627ce1.png" width=550 />
 ## Step 3 : Setting up Webhooks
 To receive messages and other events sent by Messenger users, the app should enable webhooks integration.The webhook is where the php script is, from where we'll send and receive messages. The webhooks in our case will be our php script . I’m using a free hosting service provider [000webhost]([www.000webhoost.com](https://www.000webhost.com/)) to upload my php script for this tutorial, you can use any hosting service provider with SSL certificate as **Facebook doesn’t allow http**.
    * We’ll create a file in any editor and call it myBusiness_bot.php and write the following code .
