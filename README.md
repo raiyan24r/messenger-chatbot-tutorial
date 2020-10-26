@@ -6,14 +6,15 @@
 
 
 If you own an online business you definitely understand how tiresome and repetitive it is to reply to the same questions from your customers. Furthermore late replies could potentially lead to losing a customer.
-How would you feel if a chatbot could automatically reply to all your customer’s queries and show all available products, that too instantly. You’ll be building a chatbot just like that here .A live demo of the chatbot can be seen [here](https://www.m.me/110715410820927).
+How would you feel if a chatbot could automatically reply to all your customer’s queries and show all available products, that too instantly. You’ll be building a chatbot just like that here. A live demo of the chatbot can be seen [here](https://www.m.me/110715410820927).
 
 
 
-In this tutorial for beginners with no prior experience working with Messenger Platform  we will build a simple messenger chatbot from scratch that can automatically reply to customer’s messages,FAQs and show a catalogue of available items for sale . We will be building the chatbot from scratch using basic knowledge of [php](https://www.php.net/manual/en/intro-whatis.php) programming language.
+In this tutorial, beginner developers with no prior experience working with the **Messenger Platform** will build a simple messenger chatbot from scratch that can automatically reply to customer’s messages and show a catalogue of available products for sale along with their image,price and other details. We will be building the chatbot using basic knowledge of [php](https://www.php.net/manual/en/intro-whatis.php) programming language.
 
 #### Prerequisites:
 * Basic knowledge about php programming language like variables, conditionals, loops, arrays etc
+* Basic knowledge about hosting a file on a server
 *  Any running editor of your choice.
 *  A running facebook page
 
@@ -23,10 +24,10 @@ In this tutorial for beginners with no prior experience working with Messenger P
 
 ### Steps For Creating The Chatbot :
  1. Creating a Facebook App
- 2. Connecting app to the page
- 3. Connecting app to webhook
+ 2. Connecting App to the page
+ 3. Setting Up Webhooks
  4. Receiving and Processing Webhook Events
- 5. Sending different Messages
+ 5. Sending Different Messages
  6. Setting Up Final Chatbot
  7. Submitting App for Review
 
@@ -34,9 +35,8 @@ In this tutorial for beginners with no prior experience working with Messenger P
 
 ## Step 1 : Creating a Facebook App
    * Head on over to https://developers.facebook.com/apps/ and click on *Create App*.
-   *  Select *Manage Business Integrations*  and click Continue.
-   *  Any running editor of your choice.
-   *  Give your app a suitable display name,contact email and select *Yourself or your own business* as App Purpose and click Create App.
+   *  Select *Manage Business Integrations*  and click *Continue*.
+   *  Give your app a suitable display name,contact email and select *Yourself or your own business* as App Purpose and click *Create App*.
   
 ![1](https://user-images.githubusercontent.com/65073451/97110282-927d7100-1702-11eb-9de9-372839987bce.jpg)
 
@@ -44,7 +44,7 @@ In this tutorial for beginners with no prior experience working with Messenger P
 
 ## Step 2 : Connecting App to the Page
 Now that we have successfully created our app we will connect the app to our business page.
-   * From the app page find and click on *Set Up* for Messenger .You’ll be redirected to the Messenger Platform.
+   * From the app page, find and click on *Set Up* for Messenger .You’ll be redirected to the Messenger Platform.
    *  Find the Access Tokens section and Click on *Add or Remove Pages*, select your page and click *Done* . 
 
 
@@ -62,8 +62,8 @@ Now that we have successfully created our app we will connect the app to our bus
 
 
 ## Step 3 : Setting up Webhooks
-To receive messages and other events sent by Messenger users, the app should enable webhooks integration.The webhook is where the php script is, from where we'll send and receive messages. The webhooks in our case will be our php script . I’m using a free hosting service provider [000webhost](https://www.000webhost.com/) to upload my php script for this tutorial, you can use any hosting service provider with SSL certificate as **Facebook doesn’t allow http**.
-   * We’ll create a file in any editor and call it myBusiness_bot.php and write the following code .
+To receive messages and other events sent by Messenger users, the app should enable webhooks integration. The webhook from where we'll send and where we'll receive messages. The webhooks in our case will be our php script . I’m using a free hosting service provider [000webhost](https://www.000webhost.com/) to upload my php script for this tutorial, you can use any hosting service provider with SSL certificate as **Facebook doesn’t allow http**.
+   * We’ll create a file in any editor and call it **myBusiness.php** and write the following code .
 ```php
 <?php
 
@@ -77,11 +77,11 @@ if ($_REQUEST['hub_verify_token'] === $hubVerifyToken) {
    *  Once done we’ll save the file and upload it to our free server. 
    *  Now we’ll return to the app page and click on *Edit Callback URL* in the Webhooks section and fillup the form.
    *  Callback URL will be the public URL of our **myBusiness.php** file. 
-   *  Verify Token will be 'myBusiness_token'  .
+   *  Verify Token will be 'myBusiness_token' same as in line [3](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e/code-steps/file_one.php#L3) of our php script  .
 
 ![5](https://user-images.githubusercontent.com/65073451/97110743-1c2e3e00-1705-11eb-8c46-b60bc4229fdd.PNG)
 
-   *  Subscribe to certain Webhooks events.Click on *Add Subscriptions* and select *messages* and *messages_postbacks*.
+   *  Subscribe to certain Webhooks events. Click on *Add Subscriptions* and select *messages* and *messages_postbacks*.
 
 ![6](https://user-images.githubusercontent.com/65073451/97110770-43850b00-1705-11eb-8ab0-1da14a1bb7aa.PNG)
 
@@ -93,14 +93,19 @@ And with that we’re done with creating our app, connecting it to our page and 
 As we’ve successfully done setting everything up and subscribing to webhook events we’ll receive events from  Messenger Platform as POST requests. These events are sent when a variety of interactions or events happen including when a person sends a message. We will receive these events in our php script and process them.
 
 
-* Open the myBusiness.php file in any editor and add the following lines of code at the end 
+* Open the **myBusiness.php** file in any editor and add the following lines of code at the end .
 
 ```php
-$raw_input = file_get_contents('php://input'); // Receive POST request events from Messenger Platform in json format and store it in $raw_input variable
-$input = json_decode($raw_input, true); // Process the json and decode it to create a multidimensional associative array
-$senderId = $input['entry'][0]['messaging'][0]['sender']['id']; //Unique sender id for the user interacting with your page
-$messageText = $input['entry'][0]['messaging'][0]['message']['text']; // Text Message sent by a user to the page
-$postback = $input['entry'][0]['messaging'][0]['postback']['payload']; // Postback received when user clicks on a button
+// Receive POST request events from Messenger Platform in JSON format and store it in $raw_input variable
+$raw_input = file_get_contents('php://input');
+// Process the json and decode it to create a multidimensional associative array
+$input = json_decode($raw_input, true);
+//Unique sender id for the user interacting with your page 
+$senderId = $input['entry'][0]['messaging'][0]['sender']['id'];
+// Text Message sent by a user to the page
+$messageText = $input['entry'][0]['messaging'][0]['message']['text'];
+// Postback received when user clicks on a button 
+$postback = $input['entry'][0]['messaging'][0]['postback']['payload']; 
 ```
 ###### The variables and their use
 | Variable       | Use                                                                                                                                                                                                                                                  |
@@ -108,7 +113,7 @@ $postback = $input['entry'][0]['messaging'][0]['postback']['payload']; // Postba
 | `$raw_input`   | Receive POST request webhook events from Messenger Platform in [JSON](https://www.json.org/json-en.html) format                                                                                                                                      |
 | `$input`       | [Process](https://www.php.net/manual/en/function.json-decode) the JSON and decode it to create a multidimensional associative [array](https://www.php.net/manual/en/language.types.array.php) for ease of use                                        |
 | `$senderId`    | [PSID](https://developers.facebook.com/docs/messenger-platform/getting-started/quick-start#what-is-a-psid-) of the user for whom the webhook event is received.With each event a sender ID unique for the user interacting with the page is received |
-| `$messageText` | Text Message sent by a user to the page with the specific **$senderID**                                                                                                                                                                              |
+| `$messageText` | Text Message sent by a user to the page with the specific ```$senderId```                                                                                                                                                                              |
 | `$postback`    | Postback string received when user clicks on a button                                                                                                                                                                                                |
 
 **Your php script upto this step would look like [this](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/file_two.php)**
@@ -122,14 +127,14 @@ $postback = $input['entry'][0]['messaging'][0]['postback']['payload']; // Postba
 
 All messages,templates or attachments are sent using the [Send API](https://developers.facebook.com/docs/messenger-platform/reference/send-api). We’ll be sending all types of messages,templates or attachments by making POST requests using [cURL](https://www.php.net/manual/en/book.curl.php). We’ll be using php multidimensional arrays to format the structured and unstructured messages and then parse them into JSON before sending the request for our benefit.
 
-We need the *Access Token* we generated and saved in **STEP 2** . If you’ve lost it it’s fine, go to your app dashboard following STEP 2 and generate another token and save it. Only difference is you don’t have to add your page to the app again . 
+We need the *Access Token* we generated and saved in [STEP 2](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/README.md#step-2--connecting-app-to-the-page). If you’ve lost it it’s fine, go to your app dashboard following STEP 2 and generate another token and save it. Only difference is you don’t have to add your page to the app again . 
 
 
 #### cURL Request Format
 
 
 ```php
-$accessToken = "EAAHMnZB0dW1oBAIIOMdh6vENe........";
+$accessToken = "EAAHMnZB0dW1oBAIIOMdh6vENe........";// Change to your generated token
 $requestURI = 'https://graph.facebook.com/v8.0/me/messages?access_token='; //Request URI
 
 $ch = curl_init($requestURI . $accessToken); //Initiating curl with the link to send the request
@@ -164,16 +169,16 @@ $response =
   ];
 
 ```
-###### The variable/key created and their use
+###### The variable/array key created and their use
 | Variable/Key  | Use                                            |
 | ------------- | ---------------------------------------------- |
-| $response     | Array                                          |
+| `$response`     | Array                                          |
 | recipient     | An array with the PSID of the receiver         |
 | recipient. id | Receiver PSID                                  |
 | message       | An array with the text message                 |
 | message.text  | The text message that will be sent to the user |
 
-Now let’s try sending an actual message from our chatbot.Open your php file and add the following lines of code at the end .
+Now let’s try sending an actual message from our chatbot. Open your php file and add the following lines of code at the end .
 ```php
 if (isset($messageText)) {
   $response =
@@ -184,7 +189,7 @@ if (isset($messageText)) {
 }
 
 
-$accessToken = "EAAHMnZB0dW1oBAIIOMdh6vENeCFroWREHarblwBUW0vMMGgvMJbypuZCyZCHX62hykMdicR6MsTp4GpRai7zOMFfgoZAG4fZCAZBvcjCeZCUA8Qtu8As1gQzVEB5F8ssYjnSPUZCJ0uHxj0mniDbYHe4kB6mffaFTs5CEpR6ZBO5AVBavK1fFeyID";
+$accessToken = "EAAHMnZB0dW1oBAI....."; //Change to your generated token
 $requestURI = 'https://graph.facebook.com/v8.0/me/messages?access_token='; //Request URI
 
 $ch = curl_init($requestURI . $accessToken); //Initiating curl with the link to send the request
@@ -200,7 +205,7 @@ curl_close($ch); // Closing the curl connection
 ```
 **The php script will be [this](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/file_three.php)**
 
-Save the file to the same location.Once done try sending a message to your page. You should get an automated response saying *'Hello, I am a chatbot'* . (**Important** ! : Be sure to change the access token and hub verify token)
+Save the file to the same location in the server. Once done try sending a message to your page. You should get an automated response saying *'Hello, I am a chatbot'* . (**Important** ! : Be sure to change the access token and hub verify token)
 
 
 
@@ -209,7 +214,7 @@ Congratulations ! You’ve successfully set up your first chatbot that automatic
 
 ###### Code Explanation
 
-* Line [3](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/d73e3dcdaa3da7bb895a7365011ba1bb63b4a1bc/code-steps/file_three.php#L3) to Line [14](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/d73e3dcdaa3da7bb895a7365011ba1bb63b4a1bc/code-steps/file_three.php#L14) : We set up webhooks and process events following Step 3 and Step 4
+* Line [3](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/d73e3dcdaa3da7bb895a7365011ba1bb63b4a1bc/code-steps/file_three.php#L3) to Line [14](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/d73e3dcdaa3da7bb895a7365011ba1bb63b4a1bc/code-steps/file_three.php#L14) : We set up webhooks and process events following [Step 3](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/README.md#step-3--setting-up-webhooks) and [Step 4](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/README.md#step-4--receiving-and-processing-webhooks-events)
 * Line [18](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/d73e3dcdaa3da7bb895a7365011ba1bb63b4a1bc/code-steps/file_three.php#L18) : Conditional statement checks if a message has been sent by the user to the page using the predefined php __function ```isset()```__
 * Line [19](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_three.php#L19) to Line [24](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_three.php#L24) : If the condition is satisfied, then ```$response``` array for text message format is created 
 * Line [29](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_three.php#L29) to Line [36](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_three.php#L36) : ```$response``` is parsed into JSON format and sent as a request using cURL
@@ -260,9 +265,9 @@ $response =  [
 ###### Postback Button [Properties](https://developers.facebook.com/docs/messenger-platform/reference/buttons/postback#properties)
 | Property | Use                                                                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type     | Must be postaback                                                                                                                                       |
+| type     | Must be postback                                                                                                                                       |
 | title    | The text that will be displayed on the button                                                                                                           |
-| payload  | A string that will be sent back to your webhook when a user clicks on this button .This allows the script to take decisions based on the button pressed |
+| payload  | A string that will be sent back to your webhook when a user clicks on this button. This allows the script to take decisions based on the button pressed |
 
 Now we will see the button template in action. From the php file erase every line of code created after setting up webhooks. Copy and paste the following code at the end and save it to the server.
 
@@ -300,21 +305,21 @@ if (isset($messageText)) {
 }
 ```
 **Alternatively, you can rewrite the entire script from [here](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/file_four.php)** .
-Now try sending a text message to the page. The bot should reply with a text message attached to a button. Now click on the button and the chatbot will reply with 'Hello, I am a chatbot'. Amazing! Isn’t it ?
+Now try sending a text message to the page. The bot should reply with a text message attached to a button. Now click on the button and the chatbot will reply with *'Hello, I am a chatbot'*. Amazing! Isn’t it ?
 
 ###### Code Explanation
 
-* Line [1](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L1) to Line [14](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L14) : Script checks if a message is sent.
-* Line [16](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L16) : If message is sent then a `$response` array is created with button template with a single button
-* Line [17](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L17) to Line [38](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L38) : The `$response` array sent using cURL to show the user a button 
+* Line [1](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L1) to Line [14](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L14) : Webhooks is setup
+* Line [16](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L16) : Checks if a message is sent by user.
+* Line [17](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L17) to Line [38](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L38) : If message is sent then a `$response` array is created in button template format with a single button
 * Line [51](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L51) to Line [56](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/file_four.php#L56) : `$response` is parsed into JSON format and sent as a request using cURL
 
-Alright then we are now going to implement one more template which will actually display the products/services offered by our business in a horizontal scrollable carousel with images.
+Alright then we are now going to implement one more template which will actually use to display the products/services offered by our business in a horizontal scrollable carousel with images.
 
 ### Sending Generic Template
 The [generic template](https://developers.facebook.com/docs/messenger-platform/send-messages/template/generic) is one of my favourites because it is one of the most useful and interactive templates offered to us by the Messenger Platform. It is a structured message that contains an image,title,subtitle and even buttons all together.
-We’ll be sending a list of this template as a horizontal scrollable carousel. How cool is that !?
-he details and properties of the generic template with an example can be found [here](https://developers.facebook.com/docs/messenger-platform/reference/templates/generic). An example array format that we will be using to send a list of products and their details in a horizontal scrollable carousel is given below: 
+We’ll be sending a list of this template as a horizontal scrollable carousel. How cool is that ?
+The details and properties of the generic template along with an example can be found [here](https://developers.facebook.com/docs/messenger-platform/reference/templates/generic). An example array format that we will be using to send a list of products and their details in a horizontal scrollable carousel is given below: 
 ```php
 $response = [
   'recipient' => ['id' => $senderId],
@@ -510,29 +515,30 @@ curl_close($ch); // Closing the curl connection
 
 ```
 
-**Alternatively, download the [file](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/complete_chatbot.php) ,replace the **$accessToken** with your's.**
+**Alternatively, download the [file](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/complete_chatbot.php) ,replace the **$accessToken** with the one you generated.**
 
 Save the file and upload to the same location on the server. 
-Now try sending a message " what are the available products? " . The chatbot should reply with a carousel of products available. Click on any button on the carousel and you’ll get respective details of the product.
+Now try sending a message *" what are the available products? "* . The chatbot should reply with a carousel of products available. Click on any button on the carousel and you’ll get respective details of the product.
 
 #### Modifying List of Products 
 * The list of products in the horizontal catalogue can be modified. Based on your need you can increase (upto 10) or decrease the number of products. 
 * The array in this [line](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/eaeb1937a744f1640327b8f8fddabf50535e1382/code-steps/complete_chatbot.php#L33) can be modified to add or remove more generic templates with product image, name, price etc.
 * More conditional statements can be added to based on user action to create a more developed chatbot capable of doing much more. 
+* The `$query` array in line [20](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L20) can be modified to add or remove strings so that the chatbot is triggered to certain messages.
 
 The sky is the limit !
 
 
 ###### Code Explanation
-* Line [1](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L1) to Line [8](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L8) :We wrote code to setup webhooks (follow STEP 2)  and receive webhook events (follow STEP 3). 
+* Line [1](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L1) to Line [8](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L8) :We wrote code to setup webhooks (follow [STEP 2](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/README.md#step-2--connecting-app-to-the-page))  and receive webhook events (follow [STEP 3](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/README.md#step-2--connecting-app-to-the-page)). 
 
 After that we are going to setup the logic statements using if and if-else conditional statements.
-* Line [20](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L20) : We write an array $query containing a list of query strings that a customer might text to trigger the chatbot. You can add your own strings in the array
+* Line [20](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L20) : We write an array `$query` containing a list of query strings that a customer might text to trigger the chatbot. You can add your own strings in the array
 * Line [23](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L23) : In the if statement we check if the **$messageText** variable matches any of the strings in the __\$query__ array 
 * Line [25](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L25) to Line [81](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L81) : If the condition is satisfied then we create $response array in the generate template format with 3 elements to display 3 products and their details with image of the product. We specify the product name in title, product price as subtitle and image_url as the link of the product image to display.
 * Line [82](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L82) : In the if-else statement we check if the $postback string is the same as the payload of button of product 1 in line [42](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L42)
 * Line [84](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L84) : If the condition is satisfied we create a $response array in the format of Text Message with text as the relevant details of product 1
-* Line [89](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L89) to Line [107](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L107) : We similarly check for which button payload the **$postback** string matches with and create a __\$response__ variable the same way
+* Line [89](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L89) to Line [128](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L128) : We similarly check for which button payload the **$postback** string matches with and create a __\$response__ variable the same way
 * Line [131](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L131) to Line [140](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L140) : We create a cURL connection **$ch** and send a request with the value __\$response__ array (parsing into JSON format) created in the conditional statements using the Request URI and __\$accessToken__
 
 
@@ -559,7 +565,7 @@ You have to submit the app for review to get certain permissions.
 
 5. Now it’s time to Complete App verification by clicking on the options.
 6. Move on  to the Platform Settings section, check the information and in the space provided, write how can the facebook community access your app in order to test it and save
-7. Next, click on Requested Permissions and Feature and fill “Tell us how you're using this permission or feature” by giving how you will be using the  Pages_messaging feature.
+7. Next, click on Requested Permissions and Feature and fill *“Tell us how you're using this permission or feature”* by giving how you will be using the  *pages_messaging* feature.
 8. Select your page
 9. Give details about step by step function about your app.
 
