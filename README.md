@@ -113,7 +113,7 @@ $postback = $input['entry'][0]['messaging'][0]['postback']['payload'];
 | `$raw_input`   | Receive POST request webhook events from Messenger Platform in [JSON](https://www.json.org/json-en.html) format                                                                                                                                      |
 | `$input`       | [Process](https://www.php.net/manual/en/function.json-decode) the JSON and decode it to create a multidimensional associative [array](https://www.php.net/manual/en/language.types.array.php) for ease of use                                        |
 | `$senderId`    | [PSID](https://developers.facebook.com/docs/messenger-platform/getting-started/quick-start#what-is-a-psid-) of the user for whom the webhook event is received.With each event a sender ID unique for the user interacting with the page is received |
-| `$messageText` | Text Message sent by a user to the page with the specific ```$senderId```                                                                                                                                                                              |
+| `$messageText` | Text Message sent by a user to the page with the specific ```$senderId```                                                                                                                                                                            |
 | `$postback`    | Postback string received when user clicks on a button                                                                                                                                                                                                |
 
 **Your php script upto this step would look like [this](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/file_two.php)**
@@ -172,7 +172,7 @@ $response =
 ###### The variable/array key created and their use
 | Variable/Key  | Use                                            |
 | ------------- | ---------------------------------------------- |
-| `$response`     | Array                                          |
+| `$response`   | Array                                          |
 | recipient     | An array with the PSID of the receiver         |
 | recipient. id | Receiver PSID                                  |
 | message       | An array with the text message                 |
@@ -265,7 +265,7 @@ $response =  [
 ###### Postback Button [Properties](https://developers.facebook.com/docs/messenger-platform/reference/buttons/postback#properties)
 | Property | Use                                                                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type     | Must be postback                                                                                                                                       |
+| type     | Must be postback                                                                                                                                        |
 | title    | The text that will be displayed on the button                                                                                                           |
 | payload  | A string that will be sent back to your webhook when a user clicks on this button. This allows the script to take decisions based on the button pressed |
 
@@ -515,7 +515,7 @@ curl_close($ch); // Closing the curl connection
 
 ```
 
-**Alternatively, download the [file](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/complete_chatbot.php) ,replace the **$accessToken** with the one you generated.**
+**Alternatively, download the [file](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/complete_chatbot.php) with the complete code ,replace the **$accessToken** with the one you generated.**
 
 Save the file and upload to the same location on the server. 
 Now try sending a message *" what are the available products? "* . The chatbot should reply with a carousel of products available. Click on any button on the carousel and you’ll get respective details of the product.
@@ -527,7 +527,8 @@ Now try sending a message *" what are the available products? "* . The chatbot s
 * The `$query` array in line [20](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L20) can be modified to add or remove strings so that the chatbot is triggered to certain messages.
 
 The sky is the limit !
-
+#### Complete Chatbot File
+The file can be found [here](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/complete_chatbot.php).
 
 ###### Code Explanation
 * Line [1](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L1) to Line [8](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L8) :We wrote code to setup webhooks (follow [STEP 2](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/README.md#step-2--connecting-app-to-the-page))  and receive webhook events (follow [STEP 3](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/README.md#step-2--connecting-app-to-the-page)). 
