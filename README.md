@@ -23,13 +23,13 @@ In this tutorial, beginner developers with no prior experience working with the 
 
 
 ### Steps For Creating The Chatbot :
- 1. [Creating a Facebook App](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-1--creating-a-facebook-app)
- 2. [Connecting App to the Page](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-2--connecting-app-to-the-page)
- 3. [Setting Up Webhooks](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-3--setting-up-webhooks)
- 4. [Receiving and Processing Webhook Events](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-4--receiving-and-processing-webhooks-events)
- 5. [Sending Different Messages](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-5--replying-to-message)
- 6. [Setting Up Final Chatbot](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-6--setting-up-the-final-chatbot)
- 7. [Submitting App for Review](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/README.md#step-7-submitting-app-for-review)
+ 1. Creating a Facebook App
+ 2. Connecting App to the Page
+ 3. Setting Up Webhooks
+ 4. Receiving and Processing Webhook Events
+ 5. Replying to Messages
+ 6. Setting Up Final Chatbot
+ 7. Submitting App for Review 
 
 ---
 
