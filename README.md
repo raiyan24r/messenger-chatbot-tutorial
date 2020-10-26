@@ -6,7 +6,7 @@
 
 
 If you own an online business you definitely understand how tiresome and repetitive it is to reply to the same questions from your customers. Furthermore late replies could potentially lead to losing a customer.
-How would you feel if a chatbot could automatically reply to all your customer’s queries and show all available products, that too instantly. You’ll be building a chatbot just like that here .A live demo of the chatbot can be seen [here](m.me/110715410820927).
+How would you feel if a chatbot could automatically reply to all your customer’s queries and show all available products, that too instantly. You’ll be building a chatbot just like that here .A live demo of the chatbot can be seen [here](https://www.m.me/110715410820927).
 
 
 
@@ -538,6 +538,9 @@ After that we are going to setup the logic statements using if and if-else condi
 
 
 Now that you've successfully set up the chatbot that replies to your messages as intended.We must now submit the App for review before we can make it open to the public. 
+
+#### Graph API Explorer
+[Graph API Explorer](https://developers.facebook.com/tools/explorer) is a very useful tool to test API queries and generate code samples. It will allow you to find any error responses in your requests. It can also do a number of other useful tasks. A detailed guide on using the Graph API Explorer can be found [here](https://developers.facebook.com/docs/graph-api/explorer/)
 
 ## Step 7: Submitting App Review
 
