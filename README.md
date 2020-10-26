@@ -12,7 +12,7 @@ How would you feel if a chatbot could automatically reply to all your customerâ€
 
 In this tutorial, beginner developers with no prior experience working with the **Messenger Platform** will build a simple messenger chatbot from scratch that can automatically reply to customerâ€™s messages and show a catalogue of available products for sale along with their image,price and other details. We will be building the chatbot using basic knowledge of [php](https://www.php.net/manual/en/intro-whatis.php) programming language.
 
-#### Prerequisites:
+### Prerequisites:
 * Basic knowledge about php programming language like variables, conditionals, loops, arrays etc
 * Basic knowledge about hosting a file on a server
 *  Any running editor of your choice.
