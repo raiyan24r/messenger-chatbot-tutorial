@@ -29,7 +29,7 @@ In this tutorial, beginner developers with no prior experience working with the 
  4. [Receiving and Processing Webhook Events](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-4--receiving-and-processing-webhooks-events)
  5. [Sending Different Messages](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-5--replying-to-message)
  6. [Setting Up Final Chatbot](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-6--setting-up-the-final-chatbot)
- 7. [Submitting App for Review](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-7-submitting-app-review)
+ 7. [Submitting App for Review](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/README.md#step-7-submitting-app-for-review)
 
 ---
 
