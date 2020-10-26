@@ -548,7 +548,7 @@ Now that you've successfully set up the chatbot that replies to your messages as
 #### Graph API Explorer
 [Graph API Explorer](https://developers.facebook.com/tools/explorer) is a very useful tool to test API queries and generate code samples. It will allow you to find any error responses in your requests. It can also do a number of other useful tasks. A detailed guide on using the Graph API Explorer can be found [here](https://developers.facebook.com/docs/graph-api/explorer/)
 
-## Step 7: Submitting for App Review
+## Step 7: Submitting App for Review
 
 ![99](https://user-images.githubusercontent.com/65073451/97117645-439a0080-172f-11eb-9d74-203b0d5c918a.PNG)
 
