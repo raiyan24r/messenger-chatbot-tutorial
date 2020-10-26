@@ -23,13 +23,13 @@ In this tutorial, beginner developers with no prior experience working with the 
 
 
 ### Steps For Creating The Chatbot :
- 1. Creating a Facebook App
- 2. Connecting App to the page
- 3. Setting Up Webhooks
- 4. Receiving and Processing Webhook Events
- 5. Sending Different Messages
- 6. Setting Up Final Chatbot
- 7. Submitting App for Review
+ 1. [Creating a Facebook App](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-1--creating-a-facebook-app)
+ 2. [Connecting App to the Page](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-2--connecting-app-to-the-page)
+ 3. [Setting Up Webhooks](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-3--setting-up-webhooks)
+ 4. [Receiving and Processing Webhook Events](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-4--receiving-and-processing-webhooks-events)
+ 5. [Sending Different Messages](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-5--replying-to-message)
+ 6. [Setting Up Final Chatbot](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-6--setting-up-the-final-chatbot)
+ 7. [Submitting App for Review](https://github.com/raiyan24r/messenger-chatbot-tutorial/tree/6e17ed4eabf6158e45236ea5a5e4fd73e9161d8e#step-7-submitting-app-review)
 
 ---
 
@@ -548,7 +548,7 @@ Now that you've successfully set up the chatbot that replies to your messages as
 #### Graph API Explorer
 [Graph API Explorer](https://developers.facebook.com/tools/explorer) is a very useful tool to test API queries and generate code samples. It will allow you to find any error responses in your requests. It can also do a number of other useful tasks. A detailed guide on using the Graph API Explorer can be found [here](https://developers.facebook.com/docs/graph-api/explorer/)
 
-## Step 7: Submitting App Review
+## Step 7: Submitting for App Review
 
 ![99](https://user-images.githubusercontent.com/65073451/97117645-439a0080-172f-11eb-9d74-203b0d5c918a.PNG)
 
