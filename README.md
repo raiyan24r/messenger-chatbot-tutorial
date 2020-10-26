@@ -510,7 +510,7 @@ curl_close($ch); // Closing the curl connection
 
 ```
 
-Alternatively, download the [file](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/complete_chatbot.php) ,replace the **$accessToken** with your's.
+**Alternatively, download the [file](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/complete_chatbot.php) ,replace the **$accessToken** with your's.**
 
 Save the file and upload to the same location on the server. 
 Now try sending a message " what are the available products? " . The chatbot should reply with a carousel of products available. Click on any button on the carousel and you’ll get respective details of the product.
