@@ -527,7 +527,7 @@ Now try sending a message *" what are the available products? "* . The chatbot s
 * The `$query` array in line [20](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/805a1c4498c8f03ec0c2183b00c07e03f9fd0e8a/code-steps/complete_chatbot.php#L20) can be modified to add or remove strings so that the chatbot is triggered to certain messages.
 
 The sky is the limit !
-#### Complete Chatbot File
+#### Complete Chatbot File | Open Source software code
 The file can be found [here](https://github.com/raiyan24r/messenger-chatbot-tutorial/blob/main/code-steps/complete_chatbot.php).
 
 ###### Code Explanation
